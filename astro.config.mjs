@@ -36,5 +36,5 @@ export default defineConfig({
 		})
 	],
 	site: 'https://ids6.github.io',
-	// base: '/Kuraga', // Git hub repo
+	base: '/Kuraga', // Git hub repo
 });
