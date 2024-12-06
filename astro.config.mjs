@@ -29,6 +29,7 @@ export default defineConfig({
 			social: {
 				github: 'https://github.com/withastro/starlight'
 			},
+			base: '/Kuraga/', // Git hub repo
 		}),
 		tailwind({
 			// Отключите базовые стили:
