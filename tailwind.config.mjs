@@ -1,5 +1,6 @@
 import starlightPlugin from '@astrojs/starlight-tailwind';
 import colors from 'tailwindcss/colors';
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -14,7 +15,8 @@ module.exports = {
       },
       fontFamily: {
         // используется для текста в интерфейсе и контента;
-        sans: ['"Atkinson Hyperlegible"'],
+        // sans: ['"Atkinson Hyperlegible"'],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
         // используется для примеров кода.
         mono: ['"IBM Plex Mono"'],
       },

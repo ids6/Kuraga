@@ -25,6 +25,10 @@ export default defineConfig({
 					label: 'Reference',
 					autogenerate: { directory: 'reference' },
 				},
+				{
+					label: 'UI',
+					autogenerate: { directory: 'tgsn_software' },
+				},
 			],
 			social: {
 				github: 'https://github.com/withastro/starlight',
