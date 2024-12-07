@@ -8,9 +8,9 @@ module.exports = {
     extend: {
       colors: {
         // используется для ссылок и выделения текущего элемента;
-        accent: colors.indigo,
+        accent: colors.neutral,
         // используется для цветов фона и границ;
-        gray: colors.zinc,
+        gray: colors.gray,
       },
       fontFamily: {
         // используется для текста в интерфейсе и контента;
