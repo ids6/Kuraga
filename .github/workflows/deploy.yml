@@ -27,34 +27,34 @@ jobs:
           # node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
           # package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
 
-  # deploy:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
-  #   steps:
-  #     - name: Deploy to GitHub Pages
-  #       id: deployment
-  #       uses: actions/deploy-pages@v4
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.EAZA_HOST }}
-          username: ${{ secrets.EAZA_USERNAME }}
-          key: ${{ secrets.EAZA_PRIVATE_KEY }}
-          script: |
-            # Создайте директорию, если её ещё нет
-            mkdir -p ${{ secrets.EAZA_DEPLOY_PATH }}
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
-            # Скопируйте файлы на сервер.  -avz означает архивный режим,verbose и  сжатие
-            rsync -avz ./build/ ${{ secrets.EAZA_USERNAME }}@${{ secrets.EAZA_HOST }}:${{ secrets.EAZA_DEPLOY_PATH }}
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Deploy via SSH
+  #       uses: appleboy/ssh-action@master
+  #       with:
+  #         host: ${{ secrets.EAZA_HOST }}
+  #         username: ${{ secrets.EAZA_USERNAME }}
+  #         key: ${{ secrets.EAZA_PRIVATE_KEY }}
+  #         script: |
+  #           # Создайте директорию, если её ещё нет
+  #           mkdir -p ${{ secrets.EAZA_DEPLOY_PATH }}
 
-            # Дополнительные команды, например, перезапуск веб-сервера (если нужно)
-            # sudo systemctl restart nginx # или другие команды для перезапуска вашего сервера
+  #           # Скопируйте файлы на сервер.  -avz означает архивный режим,verbose и  сжатие
+  #           rsync -avz ./build/ ${{ secrets.EAZA_USERNAME }}@${{ secrets.EAZA_HOST }}:${{ secrets.EAZA_DEPLOY_PATH }}
+
+  #           # Дополнительные команды, например, перезапуск веб-сервера (если нужно)
+  #           # sudo systemctl restart nginx # или другие команды для перезапуска вашего сервера
 
