@@ -16,7 +16,7 @@ module.exports = {
       fontFamily: {
         // используется для текста в интерфейсе и контента;
         // sans: ['"Atkinson Hyperlegible"'],
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
         // используется для примеров кода.
         mono: ['"IBM Plex Mono"'],
       },
